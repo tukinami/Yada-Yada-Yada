@@ -4,14 +4,14 @@ file,ghost/master/dic/emerg/yaya_emerg_dic.dic7ae61ddbc6526bb4459683892fae50c3
 file,ghost/master/dic/normal/_loading_order.txt7410fe27843b48912a1de830b1c295b7size=142date=2012-12-21T00:00:00
 file,ghost/master/dic/normal/dic_aitalk/yaya_aitalk.dicc7c8219f37ba76c737808a1e76dbcb02size=1318date=2012-12-21T00:00:00
 file,ghost/master/dic/normal/dic_aitalk/yaya_aitalk_default.dice10622a93a77c9811eb123396718bb57size=5447date=2012-12-21T00:00:00
-file,ghost/master/dic/normal/dic_base/yaya_function.dic7a817ae59a2e60e6f8a869bf18013185size=2318date=2012-12-21T00:00:00
+file,ghost/master/dic/normal/dic_base/yaya_function.dic69cfa8fdce5d038d742cc86199772f2bsize=2450date=2012-12-21T00:00:00
 file,ghost/master/dic/normal/dic_base/yaya_status.dic9d0966896839b1974dc24b477c346f9csize=1045date=2012-12-21T00:00:00
 file,ghost/master/dic/normal/dic_base/yaya_string.dicc1541850ede8697b58c91f8efe50f442size=4972date=2012-12-21T00:00:00
 file,ghost/master/dic/normal/dic_base/yaya_variable.dic2054ba324e2d8eeb498d566d9af57a1asize=771date=2012-12-21T00:00:00
 file,ghost/master/dic/normal/dic_base/yaya_word.dice4f0379fa891bbb83698bce80554a2e8size=5521date=2012-12-21T00:00:00
 file,ghost/master/dic/normal/dic_communicate/yaya_communicate.dic6b7c38885c3d92d07f34fa52fd121395size=4133date=2012-12-21T00:00:00
 file,ghost/master/dic/normal/dic_etc/yaya_menu.dic75268aff0d5cf3a5bc74d66b98aaffc2size=6477date=2012-12-21T00:00:00
-file,ghost/master/dic/normal/dic_event/yaya_bootend.dica0d22d90f391abdd2c95bc25e9db62ddsize=4962date=2012-12-21T00:00:00
+file,ghost/master/dic/normal/dic_event/yaya_bootend.dic4239f92f5dc8403fe82f70d8af191b84size=4964date=2012-12-21T00:00:00
 file,ghost/master/dic/normal/dic_event/yaya_change.dicae295c710593af6072aca6c9777be7a8size=3720date=2012-12-21T00:00:00
 file,ghost/master/dic/normal/dic_event/yaya_etc.dica08012a05a8c5f7f0a275a77b37172aasize=28593date=2012-12-21T00:00:00
 file,ghost/master/dic/normal/dic_event/yaya_mouse.dic2be80f1ba55581768916e1af17cd473fsize=3439date=2012-12-21T00:00:00
