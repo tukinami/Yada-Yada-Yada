@@ -21,7 +21,7 @@ OnFirstBoot.body
 {
     _vanishing_count = TOINT(reference[0])
 
-    '\![open,readme]'
+    '\h\![open,readme]'
     --
     Surface.following()
     --

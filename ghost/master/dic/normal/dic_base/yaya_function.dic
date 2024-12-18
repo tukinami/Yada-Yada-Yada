@@ -93,11 +93,11 @@ Array.to_nonoverlap : nonoverlap
 // ===================================================================
 Surface.following
 {
-    '\0'
+    '\0\s[0]\1\s[10]\p[2]\s[10]\0\s[-1]'
     --
-    '\1\![set,alignmenttodesktop,free]\![move,--X=0,--Y=0,--base=0,--option=ignore-sticky-window]'
+    '\1\![set,alignmenttodesktop,free]\![move,--X=0,--Y=0,--base=0,--base-offset=left.top,--move-offset=left.top,--option=ignore-sticky-window]'
     --
-    '\p[2]\![set,alignmenttodesktop,free]\![move,--X=0,--Y=0,--base=0,--option=ignore-sticky-window]'
+    '\p[2]\![set,alignmenttodesktop,free]\![move,--X=0,--Y=0,--base=0,--base-offset=left.top,--move-offset=left.top,--option=ignore-sticky-window]'
     --
-    '\![set,sticky-window,2,1,0]'
+    '\![set,sticky-window,2,1,0]\0\s[-1]'
 }
