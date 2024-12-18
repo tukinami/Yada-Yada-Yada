@@ -1,0 +1,45 @@
+// ===================================================================
+// 変数
+// ===================================================================
+
+On_Var.body.firstboot_flag
+{
+    firstboot_flag
+}
+
+On_Var.body.aitalkinterval
+{
+    aitalkinterval
+}
+
+On_Var.body.count_onclose_special
+{
+    count_onclose_special
+}
+
+// ===================================================================
+// 変数初期化
+// ===================================================================
+Var.init
+{
+    _funcs = GETFUNCLIST('On_Var.init.')
+
+    foreach _funcs; _func {
+        EVAL(_func)
+    }
+}
+
+On_Var.init.firstboot_flag
+{
+    firstboot_flag = 1
+}
+
+On_Var.init.aitalkinterval
+{
+    aitalkinterval = 150
+}
+
+On_Var.init.count_onclose_special
+{
+    count_onclose_special = 0
+}

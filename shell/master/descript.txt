@@ -1,0 +1,13 @@
+charset,UTF-8
+name,master
+type,shell
+id,master
+craftman,tukinami seika
+craftmanw,月波 清火
+
+seriko.use_self_alpha,1
+
+seriko.alignmenttodesktop,free
+
+kero.balloon.offsety,180
+char2.balloon.offsety,290

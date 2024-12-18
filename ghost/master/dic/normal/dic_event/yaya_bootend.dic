@@ -1,0 +1,158 @@
+// ******************************************************************************
+// YAYA　ゴーストテンプレート
+// 起動/終了トーク辞書
+// ******************************************************************************
+
+// ******************************************************************************
+// 初回起動 OnFirstBoot
+// ******************************************************************************
+
+OnFirstBoot
+{
+    // ---- 変数の初期化
+    username = 'ユーザー'
+
+    Var.init()
+
+    OnFirstBoot.body()
+}
+
+OnFirstBoot.body
+{
+    _vanishing_count = TOINT(reference[0])
+
+    '\![open,readme]'
+    --
+    Surface.following()
+    --
+    '\t\*\u\s[10]\h\s[-1]\w9\w9\u'
+    --
+    if _vanishing_count <= 0 {
+        '(仕事で忙しい親類に頼まれて、\w9\n娘さんの面倒を見ることになった)'
+    }
+    else {
+        '(仕事で忙しい親類に頼まれて、\w9\nまたあの娘さんの面倒を見ることになった)'
+    }
+    --
+    '\x'
+    --
+    '\t\*\u「矢田るい」ちゃん。\w9\n今日はよろしくお願いします。\w9\w9\h\s[0]…\w5…\w5よろしくお願いします。\w9\w9\u\n\n(聞いたところによると、\w5割と問題児らしいのだが)\w9\n(そうは見えない)\w9\w9\nるいちゃん、\w5じゃあさっそくだけど、\w9\n明日までの宿題を片付けちゃおうか。\w9\w9\h\s[1]\n\n…\w5…\w5ヤダ。\w9\w9\u\n\n？\w9\w9\h\s[2]\n\nお母さんといっしょじゃなきゃヤダ。\w9\w9\u\n\n(…\w5…\w5まさか)\w9\nああ、\w5でも今日は変わりに自分が…\w5…\w5。\w9\w9\h\s[100]\n\nヤ\w2ダ\w2ヤ\w2ダ\w2ヤ\w2ダ\w2！！\w9\w9\u\n\n(こういう系か)'
+    --
+    '\w9\w9\e'
+}
+
+// ******************************************************************************
+// 通常の起動 OnBoot
+// ******************************************************************************
+
+OnBoot
+{
+    Surface.following()
+    --
+    if Status.is_resolved_onclose_term() {
+        OnBoot.special()
+    }
+    else {
+        OnBoot.normal()
+    }
+    --
+    '\w9\w9\e'
+}
+
+OnBoot.special
+{
+    res_marker = '彼女は少し安心しているようだ。'
+
+    '\u\s[10]\h\s[12]あ、\w5おかえりなさい。\w9\w9\uただいま。\w9宿題やった？\w9\w9\h\s[2]\n\nう、\w5うー。\w9\w9\u\n\n(そこまでではない、\w5か)'
+}
+
+OnBoot.normal
+{
+    '\u\s[10]\h\s[-1]\u(戻ると、\w5矢田るいちゃんがこちらを見ていた)\w9\w9\h\s[0]…\w5…\w5。\w9\w9\u\n\n(こちらの様子を伺っている)\w9\n(しかし、\w5こちらとしては)\w9\n(すべきことをやってもらわなければ)'
+}
+
+// ******************************************************************************
+// 終了 OnClose
+// ******************************************************************************
+
+OnClose
+{
+    // \- なしだと、単体起動時では終了するが、複数起動時には終了しない
+    '\1\s[10]'
+    --
+    if Status.is_resolved_onclose_term() {
+        OnClose.special()
+    }
+    elseif Status.is_flagged_onclose_event_term() {
+        OnClose.event()
+    }
+    else {
+        OnClose.normal()
+    }
+}
+
+// 全て終了
+OnCloseAll
+{
+    if Status.is_resolved_onclose_term() {
+        OnClose.special()
+    }
+    else {
+        OnClose.normal()
+    }
+}
+
+OnClose.special
+{
+    res_marker = '彼女は少し安心しているようだ。'
+
+    '\u\s[10]\h\s[12]…\w5…\w5分かりました。\w9\nいってらっしゃいませ。\w9\w9\uああ、\w5いってきます。'
+    --
+    '\w9\w9\w9\-\e'
+}
+
+OnClose.event
+{
+    SHIORI3FW.RegisterTempVar('count_onclose', 'flag_onclose')
+
+    if Status.is_ended_onclose_event_count() {
+        '\u\s[10]\h\s[1]…\w5…\w5分かりました。\w9\n早く戻ってきてください。\w9\w9\uあ、\w5ああ…\w5…\w5。\w9\n\w9\n(何だか後ろ髪を引かれるな)'
+        --
+        '\w9\w9\w9\-\e'
+    }
+    else {
+        count_onclose = TOINT(count_onclose) + 1
+        flag_onclose = 1
+
+        // 一回クリアして再設定
+        SHIORI3FW.SetDelayEvent('')
+        SHIORI3FW.SetDelayEvent('OnClose.event.resume', 60)
+
+        '\u\s[10]\h\s[100]ヤ\w2ダ\w2ヤ\w2ダ\w2！！\w9どっかにいっちゃヤダ！！\w9\w9\uあ、\w5足つかまないで！\w9\n\w9\n(ど、\w5どうしたものやら)\w9\w9\h\s[11]\n\n…\w5…\w5。'
+        --
+        '\w9\w9\e'
+    }
+}
+
+OnClose.event.resume
+{
+    flag_onclose = 0
+
+    OnSurfaceRestore()
+}
+
+OnClose.normal
+{
+    '\u\s[10]\h\s[100]や\w2だ\w2や\w2だ\w2！\w9いっちゃヤダ！！\w9\w9\uお願いだから休憩させて…\w5…\w5。\w9\w9\h\s[5]\n\nうー！\w9うーー！！'
+    --
+    '\w9\w9\w9\e'
+}
+
+// ******************************************************************************
+// 最小化からの復帰 OnWindowStateRestore
+// ******************************************************************************
+
+OnWindowStateRestore
+{
+    OnSurfaceRestore()
+}

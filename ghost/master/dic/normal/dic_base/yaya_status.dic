@@ -1,0 +1,48 @@
+#define ONCLOSE_EVENT_COUNT 1
+#define ONCLOSE_SPECIAL_COUNT 2
+#define ONVANISHED_SPECIAL_TERM 2
+#define PREFIX_TALK_FLAG 'talk_flag_'
+
+// OnClose時のイベント発生条件
+Status.is_flagged_onclose_event_term
+{
+    ARRAYSIZE(SHIORI3FW.SakuraNameList) > 0 || ghostexcount > 0
+}
+
+// OnClose時のイベント未遂回数
+Status.is_ended_onclose_event_count
+{
+    TOINT(count_onclose) > ONCLOSE_EVENT_COUNT
+}
+
+// OnClose時のイベント完了条件
+Status.is_resolved_onclose_term
+{
+
+    TOINT(count_onclose_special) > ONCLOSE_SPECIAL_COUNT
+}
+
+// 特殊トーク発生条件
+Status.is_resolved_special_talk_term
+{
+    TOINT(count_onclose_special) > 0
+}
+
+// 特殊トークを見たことで立つフラグ
+Status.build_talk_flag_once
+{
+    LETTONAME(PREFIX_TALK_FLAG + TOSTR(_argv[0]), 1)
+}
+
+// OnVanished時の特殊選択肢発生条件
+Status.is_resolved_special_vanish_term
+{
+    _vars = GETVARLIST(PREFIX_TALK_FLAG)
+    _flag = 0
+
+    foreach _vars; _var {
+        _flag += TOINT(EVAL(_var))
+    }
+
+    _flag > ONVANISHED_SPECIAL_TERM
+}

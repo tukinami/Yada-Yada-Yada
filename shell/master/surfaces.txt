@@ -1,0 +1,222 @@
+charset,UTF-8
+
+descript
+{
+version,1
+}
+
+// ===================================================================
+// base
+// ===================================================================
+surface0-9,11-15
+{
+element0,base,surface00000.png,0,0
+
+collisionex0,Head,region,collision/normal.png,255,0,0
+
+animation1000.interval,runonce
+animation1000.pattern0,overlay,11000,0,0,0
+}
+
+surface100
+{
+element0,base,surface10000.png,0,0
+
+collisionex0,Head,region,collision/angry.png,255,0,0
+}
+
+// ===================================================================
+// pose
+// ===================================================================
+surface.append0-8,12-15
+{
+animation500.interval,runonce
+animation500.pattern0,overlay,10500,0,0,0
+}
+
+surface.append9,11
+{
+animation500.interval,runonce
+animation500.pattern0,overlay,10501,0,0,0
+}
+
+// ===================================================================
+// eye
+// ===================================================================
+// normal
+surface.append0,8,12
+{
+animation600.interval,periodic,2
+animation600.option,shared-index
+animation600.pattern0,overlay,10600,0,0,0
+animation600.pattern1,overlay,10601,0-1200,0,0
+animation600.pattern2,overlay,10620,80,0,0
+animation600.pattern3,overlay,10601,80,0,0
+animation600.pattern4,overlay,10600,80-200,0,0
+}
+
+// lookaway
+surface.append1,11
+{
+animation600.interval,periodic,2
+animation600.option,shared-index
+animation600.pattern0,overlay,10610,0,0,0
+animation600.pattern1,overlay,10611,0-1200,0,0
+animation600.pattern2,overlay,10620,80,0,0
+animation600.pattern3,overlay,10611,80,0,0
+animation600.pattern4,overlay,10610,80-200,0,0
+}
+
+// close_normal
+surface.append4,5,13,14
+{
+animation600.interval,runonce
+animation600.pattern0,overlay,10620,0,0,0
+}
+
+// close_smile
+surface.append6,7,9,15
+{
+animation600.interval,runonce
+animation600.pattern0,overlay,10621,0,0,0
+}
+
+// close_kyaa
+surface.append2,3
+{
+animation600.interval,runonce
+animation600.pattern0,overlay,10622,0,0,0
+}
+
+// ===================================================================
+// mouth
+// ===================================================================
+// normal
+surface.append0,1,2,4,6,11,12,13
+{
+animation700.interval,runonce
+animation700.pattern0,overlay,10700,0,0,0
+}
+
+// laugh
+surface.append8,9,14,15
+{
+animation700.interval,runonce
+animation700.pattern0,overlay,10701,0,0,0
+}
+
+// kyaa
+surface.append3,5,7
+{
+animation700.interval,runonce
+animation700.pattern0,overlay,10702,0,0,0
+}
+
+// ===================================================================
+// eyeblow
+// ===================================================================
+// normal
+surface.append0,1,2,3,4,5,6,7,11,15
+{
+animation800.interval,runonce
+animation800.pattern0,overlay,10800,0,0,0
+}
+
+// smile
+surface.append8,9,12,13,14
+{
+animation800.interval,runonce
+animation800.pattern0,overlay,10801,0,0,0
+}
+
+// ===================================================================
+// parts
+// ===================================================================
+// stand normal
+// ========================================
+// pose
+// ----------------------------------------
+// normal
+surface10500
+{
+element0,base,pose/normal.png,0,0
+}
+// angry
+surface10501
+{
+element0,base,pose/shy.png,0,0
+}
+
+// eye
+// ----------------------------------------
+surface10600
+{
+element0,base,eye/normal_normal.png,0,0
+}
+
+surface10601
+{
+element0,base,eye/normal_half.png,0,0
+}
+
+surface10610
+{
+element0,base,eye/lookaway_normal.png,0,0
+}
+
+surface10611
+{
+element0,base,eye/lookaway_half.png,0,0
+}
+
+surface10620
+{
+element0,base,eye/close_normal.png,0,0
+}
+
+surface10621
+{
+element0,base,eye/close_smile.png,0,0
+}
+
+surface10622
+{
+element0,base,eye/close_kyaa.png,0,0
+}
+
+// mouth
+// ----------------------------------------
+surface10700
+{
+element0,base,mouth/normal.png,0,0
+}
+
+surface10701
+{
+element0,base,mouth/laugh.png,0,0
+}
+
+surface10702
+{
+element0,base,mouth/kyaa.png,0,0
+}
+
+// eyeblow
+// ----------------------------------------
+surface10800
+{
+element0,base,eyeblow/normal.png,0,0
+}
+
+surface10801
+{
+element0,base,eyeblow/smile.png,0,0
+}
+
+// hair
+// ----------------------------------------
+surface11000
+{
+element0,base,hair_front.png,0,0
+}
+

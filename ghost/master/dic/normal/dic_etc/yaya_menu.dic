@@ -1,0 +1,286 @@
+// ******************************************************************************
+// YAYA　ゴーストテンプレート
+// メニュー処理辞書
+// ******************************************************************************
+
+// ******************************************************************************
+// メインメニューの展開
+//
+// AYATEMPLATE.MenuItemの使い方
+// 1つめの文字列＝選択肢に表示する文字列
+// 2つめの文字列＝選んだときに実行される関数名
+// 3つめの文字列＝改行する量　50%刻み　省略すると100%（＝\n）
+// ******************************************************************************
+
+// ------------------------------------------------------------------------------
+// メインメニュー展開
+// ------------------------------------------------------------------------------
+OpenMenu
+{
+    Menu.MAIN
+    --
+    '\0\_l[0,0]'
+    --
+    if flag_onclose > 0 {
+        '\s[11]…\w5…\w5。'
+    }
+    else {
+        '\s[0]何かありました？'
+    }
+}
+
+Menu.MAIN
+{
+    '\1\s[10]'
+    --
+    Menu.STATUS
+    --
+    '\0\_q'
+    --
+    AYATEMPLATE.MenuItem("話して", "Menu_AITALK", 200)
+    --
+    if (STRLEN(AYATEMPLATE.LastTalk) > 0) {
+        AYATEMPLATE.MenuItem("さっきの話は？", "Menu_LASTTALK")
+    }
+    else {
+        '\n\![*]\f[disable]さっきの話は？\f[default]'
+    }
+    --
+    '\n' + Menu.SETTING.aitalkinterval
+    --
+    AYATEMPLATE.MenuItem("なんでもない", "Menu_CANCEL", 50)
+    --
+    '\_q'
+}
+
+Menu.STATUS
+{
+    '\u\s[10]'
+    --
+    if Status.is_resolved_onclose_term() {
+        '\u\s[10]\_q\![*]\f[bold,true]'
+        --
+        '(彼女は少し安心できているようだ)'
+        --
+        '\f[bold,false]\n\_q'
+    }
+    elseif flag_onclose > 0 {
+        '\_q\![*]\f[bold,true]'
+        --
+        '(彼女はもじもじして、頭をこちらに向けている)'
+        '(彼女は頭をこちらに向け、もじもじしている)'
+        --
+        '\f[bold,false]\n\_q'
+    }
+    else {
+        '\_q\![*]'
+        --
+        '(特に変わった様子はない)'
+        --
+        '\n\_q'
+    }
+    --
+    if Status.is_resolved_special_vanish_term() {
+        '\_q\![*]\f[bold,true]'
+        --
+        '(彼女のこと、少し分かった気がする)'
+        --
+        '\f[bold,false]\n\_q'
+    }
+    else {
+        '\_q'
+        --
+        MenuItem.hide_choice()
+        --
+        '\n\_q'
+    }
+}
+
+// ******************************************************************************
+// 各項目の処理内容
+// ******************************************************************************
+
+// ---- 何か話して
+Menu_AITALK
+{
+    // ---- 明示的にAIトーク開始を指示
+    OnAiTalk
+}
+
+// ---- さっきの話は
+Menu_LASTTALK
+{
+    AYATEMPLATE.LastTalk
+}
+
+// ===================================================================
+// 設定メニュー
+// ===================================================================
+Menu.SETTING.aitalkinterval
+{
+    _interval_list = (0, 30, 150, 480)
+    _s = '\![*]喋り頻度(秒):'
+
+    foreach _interval_list; _interval {
+        _tag = "%(_interval)"
+        if _interval == 0 {
+            _tag = '沈黙'
+        }
+
+        if _interval == aitalkinterval {
+            _tag = '\[' + _tag + '\]'
+        }
+        else {
+            _tag = " \q[%(_tag),On_Menu.aitalkinterval.change,%(_interval)] "
+        }
+        _s += ' ' + _tag
+    }
+    _s + '\n'
+}
+
+On_Menu.aitalkinterval.change
+{
+    aitalkinterval = TOINT(reference[0])
+
+    Menu.MAIN
+    --
+    '\_l[0,0]'
+    --
+    case aitalkinterval {
+    when 0 {
+        '\s[0](沈黙します)'
+    }
+    when 1-30 {
+        '\s[0](早い間隔でトークします)'
+    }
+    when 31-300 {
+        '\s[0](普通の間隔でトークします)'
+    }
+    when 301-480 {
+        '\s[0](間隔をあけてトークします)'
+    }
+    others {
+        '\s[0](ゆ\w2っ\w2っ\w2く\w2り\w2トークします)'
+    }
+    }
+}
+
+// Menu.SETTING.username
+// {
+// "\![*]\q[""呼び名: %(username)"",On_Menu.username.ready]\n"
+// }
+
+// On_Menu.username.ready
+// {
+// "\t\*\0\s[0]では、\w5どう呼んだらよいでしょう？"
+// --
+// "\![open,inputbox,On_Menu.username.input,-1,%(username)]"
+// --
+// On_Menu.username.footer
+// }
+
+// On_Menu.username.input
+// {
+// if reference[0] == '' {
+// Menu.username.empty
+// }
+// else {
+// Menu.username.check(reference[0])
+// }
+// }
+
+// On_Menu.username.input.cancel
+// {
+// Menu.username.empty
+// }
+
+// Menu.username.empty
+// {
+// "\t\h\s[0]？\w9「%(username)」でよいですか？"
+// --
+// '\1\t'
+// --
+// AYATEMPLATE.MenuItem("それで頼みます", "On_Menu.username.decide", "%(username)", 0)
+// --
+// AYATEMPLATE.MenuItem("違います", "On_Menu.username.ready")
+// --
+// On_Menu.username.footer
+// }
+
+// Menu.username.check
+// {
+// _temp_username = SHIORI3FW.EscapeAllTags(_argv[0])
+
+// "\t\h\s[0]「%(_temp_username)」でよいでしょうか？"
+// --
+// '\1\t'
+// --
+// AYATEMPLATE.MenuItem("それで頼みます", "On_Menu.username.decide", "%(_temp_username)", 0)
+// --
+// AYATEMPLATE.MenuItem("違います", "On_Menu.username.ready")
+// --
+// On_Menu.username.footer
+// }
+
+// On_Menu.username.decide
+// {
+// username = SHIORI3FW.EscapeAllTags(reference[0])
+
+// Menu.SETTING.main
+// --
+// '\_l[0,0]'
+// --
+// "\h\s[4]「%(username)」、\w5分かりました。"
+// --
+// '\e'
+// }
+
+// On_Menu.username.footer
+// {
+// '\1'
+// --
+// AYATEMPLATE.MenuItem('設定画面へ', 'On_Menu.username.returnSETTING', 150)
+// --
+// AYATEMPLATE.MenuItem('閉じる', 'On_Menu.username.close')
+// }
+
+// On_Menu.username.returnSETTING
+// {
+// '\![close,inputbox,On_Menu.username.input]'
+// --
+// Menu_SETTING.start
+// }
+
+// On_Menu.username.close
+// {
+// '\![close,inputbox,On_Menu.username.input]'
+// }
+
+// -------------------------------------------------------------------
+// 設定ここまで
+// -------------------------------------------------------------------
+
+// ---- ヘッドライン
+Menu_HEADLINECANCEL
+{
+    // ---- キャンセルされた
+    '\u\s[10]\h\s[1]…\w5…\w5そうですか。\e'
+}
+
+// ===================================================================
+// BalloonTooltip_**
+// ===================================================================
+BalloonTooltip_Menu_AITALK
+{
+    '話を聞く'
+}
+
+BalloonTooltip_Menu_LASTTALK
+{
+    'さっきの話をもう一度'
+}
+
+BalloonTooltip_Menu_CANCEL
+{
+    '閉じる'
+}

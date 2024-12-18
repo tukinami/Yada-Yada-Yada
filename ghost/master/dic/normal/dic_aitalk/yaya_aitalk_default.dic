@@ -1,0 +1,128 @@
+#define BUILD_FLAG() Status.build_talk_flag_once(_FUNC_NAME_)
+
+Talk_Funcs.default : array
+{
+    GETFUNCLIST('Talk_Func_Default_')
+}
+
+Talk_Func_Default_000
+{
+    '\u\s[10]\h\s[100]宿題やるの、\w5ヤ\w2ダ\w2ヤ\w2ダ\w2ヤ\w2ダ\w2！\w9\w9\s[2]\n算数分かりません…\w5…\w5分かりません。\w9\n数字を見ても、\w5なにがなんだか…\w5…\w5！'
+    --
+    if Status.is_resolved_special_talk_term() {
+        BUILD_FLAG()
+        '\w9\w9\s[4]\nお母さんと一緒だと、\w9\n「分かんない」っていう気持ちが落ちつきます。\w9\s[3]\nだから、\w5お母さんと一緒じゃなきゃヤダ！'
+    }
+    --
+    '\e'
+}
+
+Talk_Func_Default_001
+{
+    '\u\s[10]\h\s[100]お洗濯ものたたむの、\w5ヤ\w2ダ\w2ヤ\w2ダ\w2ヤ\w2ダ\w2！\w9\w9\s[2]\nきれいにたためません。\w9\nどっちがたたんだやつか分からないくらい。'
+    --
+    if Status.is_resolved_special_talk_term() {
+        BUILD_FLAG()
+        '\w9\w9\s[4]\nそれに、\w5一人でお母さんの洋服見ていると、\w9\nなんだか胸がずーんとします…\w5…\w5。\w9\s[3]\nだから、\w5お母さんと一緒じゃなきゃヤダ！'
+    }
+    --
+    '\e'
+}
+
+Talk_Func_Default_002
+{
+    '\u\s[10]\h\s[100]お片付けするの、\w5ヤ\w2ダ\w2ヤ\w2ダ\w2ヤ\w2ダ\w2！\w9\w9\s[6]\n入っていたとこに、\w5何故か入りきりません。'
+    --
+    if Status.is_resolved_special_talk_term() {
+        BUILD_FLAG()
+        '\w9\w9\s[1]\n別の場所に入れるものが混じっているのかもしれないけど、\w5それは私じゃ分からないんです。\w9\s[3]\nだから、\w5お母さんと一緒じゃなきゃヤダ！'
+    }
+    --
+    '\e'
+}
+
+Talk_Func_Default_003
+{
+    '\u\s[10]\h\s[100]こんなときに電話がくるの、\w5ヤ\w2ダ\w2ヤ\w2ダ\w2ヤ\w2ダ\w2！\w9\w9\s[5]\n私にどうしろっていうのですか？\w9\n代わる相手もいないのに！'
+    --
+    if Status.is_resolved_special_talk_term() {
+        BUILD_FLAG()
+        '\w9\w9\s[6]\nお母さんはすごいです。\w9\n電話ごしの相手でも、\w5上手に対応しています。\w9\s[3]\nだから、\w5お母さんと一緒じゃなきゃヤダ！'
+    }
+    --
+    '\e'
+}
+
+Talk_Func_Default_004
+{
+    '\u\s[10]\h\s[100]こんなときに人がくるの、\w5ヤ\w2ダ\w2ヤ\w2ダ\w2ヤ\w2ダ\w2！\w9\w9\s[3]\n分かんないです！\w9\nどうしたらいいのですか！？\w9\n申し訳ないのですが、\w5固まるしかできません。'
+    --
+    if Status.is_resolved_special_talk_term() {
+        BUILD_FLAG()
+        '\w9\w9\s[6]\nお母さんみたいに、\w9\n知らない人にもレイセイに対応したいです。\w9\s[3]\nうー！\w9お母さん！！'
+    }
+    --
+    '\e'
+}
+
+Talk_Func_Default_005
+{
+    '\u\s[10]\h\s[100]お洋服の洗たく、\w5ヤ\w2ダ\w2ヤ\w2ダ\w2ヤ\w2ダ\w2！\w9\w9\s[2]\n洗剤って、\w5どれくらい入れればいいんです？\w9\s[1]\nそれに、\w5終わったあとのお洋服が、\w9\nからんでしまって取れないです…\w5…\w5。'
+    --
+    if Status.is_resolved_special_talk_term() {
+        BUILD_FLAG()
+        '\w9\w9\s[4]\nお母さんはすごいです。\w9\nテキパキお洋服を干していく様子を、\w9\nあたふたしながら見ています。\w9\s[3]\nうー！\w9お母さん！！'
+    }
+    --
+    '\e'
+}
+
+Talk_Func_Default_006
+{
+    '\u\s[10]\h\s[100]食事のお片付け、\w5ヤ\w2ダ\w2ヤ\w2ダ\w2ヤ\w2ダ\w2！\w9\w9\s[4]\nそもそも、\w5食事の終わりはなんだか寂しいです。\w9\s[1]\n片付けをしていると、\w9\nその気持ちできゅっとなって苦しいです。'
+    --
+    if Status.is_resolved_special_talk_term() {
+        BUILD_FLAG()
+        '\w9\w9\s[4]\nお母さんと一緒だと、\w5そんなことないのに。\w9\s[3]\nうー！\w9お母さんと一緒がいい！！'
+    }
+    --
+    '\e'
+}
+
+Talk_Func_Default_007
+{
+    '\u\s[10]\h\s[100]煮物を温めなおすの、\w5ヤ\w2ダ\w2ヤ\w2ダ\w2ヤ\w2ダ\w2！\w9\w9\s[6]\nどれくらいやればいいのか分かりません。\w9\s[2]\nいつもやりすぎて、\w5おいもが溶けてなくなってしまいます…\w5…\w5！'
+    --
+    if Status.is_resolved_special_talk_term() {
+        BUILD_FLAG()
+        '\w9\w9\s[3]\nうー！！\w9お母さんの作りたてが食べたいです！'
+    }
+    --
+    '\e'
+}
+
+Talk_Func_Default_008
+{
+    '\u\s[10]\h\s[100]宿題やるの、\w5ヤ\w2ダ\w2ヤ\w2ダ\w2ヤ\w2ダ\w2！\w9\w9\s[6]\n一人で教科書を音読しても、\w5読み方があっているか分かりません。'
+    --
+    if Status.is_resolved_special_talk_term() {
+        BUILD_FLAG()
+        '\w9\w9\s[1]\nお母さんがいたら、\w5そんな私に優しく教えてくれます。\w9\s[2]\n…\w5…\w5お母さん！'
+    }
+    --
+    '\e'
+}
+
+Talk_Funcs.special : array
+{
+    GETFUNCLIST('Talk_Func_Special_')
+}
+
+Talk_Func_Special_000
+{
+    if Status.is_resolved_special_talk_term() {
+       BUILD_FLAG()
+    }
+
+    '\u\s[10]\h\s[100]お留守番、\w5ヤ\w2ダ\w2ヤ\w2ダ\w2ヤ\w2ダ\w2！\w9\w9\s[4]\nひとりぼっちでいると、\w5とても…\w5…\w5とても寂しいです。\w9\w9\s[1]\n今日は貴方がいるからなんだか大丈夫ですが、\w9\nいつもはとてもたえきれません。\w9\s[2]\n…\w5…\w5お母さん！\w9早く帰ってきて下さい！！\e'
+}

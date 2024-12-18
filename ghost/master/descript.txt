@@ -1,0 +1,18 @@
+charset,UTF-8
+
+name,ヤダヤダヤダ！
+type,ghost
+
+sakura.name,矢田るい
+kero.name,あなた
+
+sstp.allowunspecifiedsend,1
+
+icon,icon.ico
+
+shiori,yaya.dll
+
+craftman,tukinami seika
+craftmanw,月波 清火
+craftmanurl,https://tukinami.github.io
+homeurl,https://raw.githubusercontent.com/tukinami/Yada-Yada-Yada/main/
